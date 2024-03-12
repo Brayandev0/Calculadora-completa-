@@ -1,19 +1,27 @@
 # Criador         : Brayan vieira 
 # função          : realiza varios calculos de numeros inteiros 
-# versão          : 2.4
+# versão          : 2.5
 # data da criação : 06/2/2024
 # Notas versão 2.2: estabilidade melhorado e mais rapidez função, case adicionada 
 # Notas versão 2.3: melhor nitidez e usabilidade, trocados espacos pelo limpador de tela 
 # Notas versão 2.4: melhora no processamento e nitidez de erros 
+# Notas versão 2.5: modificação no menu  
 #---------------------------------------------------------------------------------------------------
 #                                   Variaveis e bibliotecas importadas
 import os
 import math 
 import platform
-barras = 50 * "-"
-ESPACO = 3 * "\n"
+barras = 50 * "_"
 opçoes = ("s", "d", "m", "p", "rr", "dd")
 Insira_alguma_tecla = "\n aperte qualquer tecla para continuar\n \n insira : "
+menu = ''' \n \n
+Escolha uma operação matemática:
+
+[S] Soma             | [D] Divisão
+[P] Potência         | [M] Multiplicação 
+[DD] Divisão inteira | [RR] Raiz Quadrada 
+
+Insira : '''
 #----------------------------------------------------------------------------------------------------
 #                                   Função limpar a tela  
 def limpar_tela():
@@ -26,15 +34,15 @@ def limpar_tela():
 #---------------------------------------------------------------------------------------------------
 #                                   Menu e inicio da calculadora
 while True:
-    decisao1 = input("deseja entrar na calculadora ? [S] sim ou [N] não? : ").lower().startswith("s")
-    print(barras)
+    decisao1 = input(" \n deseja entrar na calculadora ? [S] sim ou [N] não? : ").lower().startswith("s")
     if not decisao1 :
-        print("saindo do programa")
+        limpar_tela()
+        print("\n saindo do programa....... \n ")
         break
 #-------------------------------------------------------------------------------------------------
 #                                  Escolha de calculo 
     print("\n" * 100)
-    decisao2 = input("oque você deseja realizar ? \n \n [s] soma | [d] divisão \n \n [m] multiplicação | [p] potencia \n \n [rr] raiz quadrada | [dd] divisão inteira  \n \n Insira : ").lower()
+    decisao2 = input(menu).lower()
     limpar_tela()
 #-------------------------------------------------------------------------------------------------
 #                                   Tratamento de erro
@@ -48,8 +56,7 @@ while True:
     try:
         match decisao2:
             case "rr":
-                    print(ESPACO)
-                    raiz_num = int(input("insira o numero para ver a raiz quadrada : "))
+                    raiz_num = int(input(" \n \n \n insira o numero para ver a raiz quadrada : "))
                     resul = math.sqrt(raiz_num)
                     limpar_tela()
                     print(f" a raiz de {raiz_num} e {resul:.2f} \n ")
